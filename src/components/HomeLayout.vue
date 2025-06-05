@@ -39,20 +39,9 @@
               v-for="book in category.books"
               :key="book.primary_isbn13"
               cols="6"
-              md="2"
+              md="4"
             >
-<!--              <h3>{{book.title}}</h3>-->
-              <v-sheet>
-                <v-img
-                  :src="book.book_image"
-                  class="mb-2"
-                  contain
-                  height="200"
-                ></v-img>
-                <div class="text-subtitle-1 font-weight-bold">{{ book.title }}</div>
-                <div>{{ book.author }}</div>
-                <div>{{ book.publisher }}</div>
-              </v-sheet>
+              <Book :book="book"></Book>
             </v-col>
           </template>
         </v-row>
@@ -64,7 +53,6 @@
 <script setup>
   import axios from 'axios'
   import { ref, onMounted } from 'vue'
-  import {ca} from "vuetify/locale";
 
   const drawer = ref(null)
   const categories = ref([])
